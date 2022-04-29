@@ -8,7 +8,7 @@ const CardPlayer = () => {
     const [value, setValue] = useState('');
 
     const setData = (type) => {
-        setVisible(!visible);
+        setVisible(true);
         setValue(type)
         
     };
@@ -17,17 +17,17 @@ const CardPlayer = () => {
         <>
             {!visible ? (
                 <>
-                    <div className="card-player" onClick={() => setData("singleplayer")} >
+                    <div className="card-player" onClick={() => setData("singlePlayer")} >
                         <div className="image-card-player"></div>
                         <p>Single Player</p>
                     </div>
-                    <div className="card-player" onClick={() => setData()}>
+                    <div className="card-player" onClick={() => setVisible(true)}>
                         <div className="image-card-players"></div>
                         <p>MultiPlayer</p>
                     </div>
                 </>
             ) : (
-                <PlayerRegistration value={value} setVisible={setVisible}/>
+                <PlayerRegistration value={value}/>
             )}
         </>
     );

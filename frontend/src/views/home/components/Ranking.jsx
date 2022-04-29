@@ -1,18 +1,14 @@
 import React from 'react';
+import DataPlayer from './DataPlayer';
 
-const Ranking = () => {
+const Ranking = ({ handleRestart, points, player }) => {
     return (
         <div className="container-ranking">
             <h3 className="title-ranking">Weekly Ranking</h3>
             <div className="details-ranking">
-               <div className='data-winner'>
-                  <div className='image-ranking'>
-                      <p>10</p>
-                  </div>
-                  <p>Elianita</p>
-                  <p>1487</p>
-               </div>
+               <DataPlayer />
             </div>
+            <button className="button-reset" onClick={() => handleRestart()}></button>
         </div>
     );
 };

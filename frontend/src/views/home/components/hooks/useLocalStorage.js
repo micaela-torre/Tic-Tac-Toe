@@ -18,5 +18,6 @@ export function useLocalStorage(key, initialValue) {
             console.log(err);
         }
     };
+    console.log(valueLocalStorage)
     return [valueLocalStorage, setLocalStorage];
 }

@@ -109,16 +109,38 @@
     grid-template-columns: repeat(auto-fill, minmax(30%, 1fr));
     grid-template-rows: 20vh;
 }
-.box-board-game {
+.square {
+    height: 20vh;
     background-color: #332167;
     border-radius: 0.5rem;
     cursor: pointer;
+    font-size: 5rem;
+    color: #e5e3de;
+    text-shadow: 1px 1px #333, 1px 1px #333, 2px 2px #333, 3px 3px #333, 4px 4px #333, 5px 5px #333, 6px 6px #333, 7px 7px #333, 8px 8px #333, 9px 9px #333,
+        10px 10px #333, 11px 11px #333, 12px 12px #333, 13px 13px #333, 14px 14px #333, 15px 15px #333, 16px 16px #333, 17px 17px #333, 18px 18px #333,
+        19px 19px #333, 20px 20px #333;
+    font-family: 'Luckiest Guy', cursive;
+}
+
+.styled-x {
+    color: #eb1751;
+    -webkit-text-stroke: 1.5px #ffd032;
+}
+.styled-o {
+    color: #ffd032;
+    -webkit-text-stroke: 1.5px #eb1751;
 }
 .container-ranking {
     background-color: #6649c4;
-    width: 90%;
+    width: 40rem;
     height: 70vh;
     border-radius: 1rem;
+    position: absolute;
+    top: 20%;
+    left: 26%;
+    position: fixed;
+    z-index: 1;
+    box-shadow: -300px 0px 200vw 200vw #444343d1;
 }
 .title-ranking {
     font-size: 2.5rem;
@@ -171,4 +193,48 @@
     transform: rotate(-3deg);
     font-family: 'Luckiest Guy', cursive;
     -webkit-text-stroke: 1.5px #eb1751;
+}
+.button-reset {
+    background-image: url('https://i.postimg.cc/9QG5D7Vw/reset-button.png');
+    background-position: center;
+    background-size: cover;
+    width: 5rem;
+    height: 5rem;
+    border-radius: 100%;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+.controls-status-restart {
+    height: 70vh;
+    padding-left: 0.5rem;
+    width: 22%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-content: center;
+}
+
+.controls-status-restart p {
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+    font-weight: bolder;
+    font-size: 1.3rem;
+    color: #ffd032;
+}
+.avatar-views {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+}
+.avatar-views {
+    flex-direction: none;
+}
+.image-avatar-player {
+    height: 64px;
+    width: 64px;
+    cursor: pointer;
+
+}
+.image-avatar-player:hover {
+    transform: scale(1.1);
 }
