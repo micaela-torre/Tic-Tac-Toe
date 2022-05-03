@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import Square from './Square';
 import Ranking from './Ranking';
+import Input from './Input';
+import { useLocalStorage } from './hooks/useLocalStorage';
 
-const BoardGame = ({ player, value }) => {
+const BoardGame = ({ playerOne, playerTwo, isOnePlayer, inputHandlerPlayer }) => {
     const defaultSquares = () => new Array(9).fill(null);
     const [squares, setSquares] = useState(defaultSquares());
     const [winner, setWinner] = useState(null);
-    const [points, setPoints] = useState(0);
+    const [pointsOne, setPointsOne] = useState(0);
+    const [pointsTwo, setPointsTwo] = useState(0);
+    const { verifyInformation } = useLocalStorage('listOfInformation');
 
     const winningLines = [
         [0, 1, 2],
@@ -27,20 +31,35 @@ const BoardGame = ({ player, value }) => {
             });
         };
         const playerWon = linesThatAre('x', 'x', 'x').length > 0;
-        const computerWon = linesThatAre('o', 'o', 'o').length > 0;
+        const computerOrPlayerTwo = linesThatAre('o', 'o', 'o').length > 0;
+
+        const setPointsLocalStorage = (player, points) => {
+            console.log(player, points);
+            let listOfWinners = JSON.parse(localStorage.getItem('listOfInformation'));
+            listOfWinners = listOfWinners.filter(winner => {
+                if (winner.namePlayerOne === player) {
+                    return (winner.points = points);
+                } else if (winner.namePlayerTwo === player) {
+                    return (winner.points = points);
+                }
+                listOfWinners =[...listOfWinners]
+            });
+            console.log(listOfWinners);
+        };
+        setPointsLocalStorage(playerOne.namePlayerOne, pointsOne);
         if (playerWon) {
-            setWinner('X');
-            setPoints(points + 10);
+            setWinner(playerOne.namePlayerOne);
+            setPointsOne(pointsOne + 100);
+            setPointsLocalStorage(playerOne.namePlayerOne, pointsOne);
         }
-        if (computerWon) {
-            setWinner('O');
-            setPoints(points + 10);
+        if (computerOrPlayerTwo) {
+            setWinner(`${playerTwo.namePlayerTwo || 'Computer'}`);
+            setPointsTwo(pointsTwo + 100);
+            setPointsLocalStorage(`${playerTwo.namePlayerTwo || 'Computer'}`, pointsTwo);
         }
-        if (value === 'singlePlayer') {
+        if (isOnePlayer) {
             const isComputerTurn = squares.filter(square => square !== null).length % 2 === 1;
-
             const emptyIndexes = squares.map((square, index) => (square === null ? index : null)).filter(notNull => notNull !== null);
-
             const putComputerAt = index => {
                 let newSquares = squares;
                 newSquares[index] = 'o';
@@ -82,11 +101,8 @@ const BoardGame = ({ player, value }) => {
     };
 
     let status;
-    if (winner) {
-        status = `Winner: ${winner}`;
-    } else {
-        status = 'Next player: ' + (isPlayerTurn ? 'X' : 'O');
-    }
+
+    status = winner ? `Winner: ${winner}` : 'Next player: ' + (isPlayerTurn ? playerOne.namePlayerOne : playerTwo.namePlayerTwo);
 
     const handleRestart = () => {
         setWinner(null);
@@ -110,12 +126,21 @@ const BoardGame = ({ player, value }) => {
             <div className="controls-status-restart">
                 <p>{status}</p>
                 {winner && (
-                    <p>
-                        Winner {winner} : {points}pts
-                    </p>
+                    <>
+                        <Input
+                            type="hidden"
+                            name="points"
+                            // value={points}
+                            onChange={() => {
+                                inputHandlerPlayer();
+                                verifyInformation();
+                            }}
+                        />
+                    </>
                 )}
-                {winner === 'X' && <Ranking points={points} player={player} handleRestart={handleRestart} />}
-                <button className="button-reset" onClick={() => handleRestart()}></button>
+                {winner && <Ranking handleRestart={handleRestart} />}
+
+                <button className="button-reset" onClick={handleRestart}></button>
             </div>
         </>
     );

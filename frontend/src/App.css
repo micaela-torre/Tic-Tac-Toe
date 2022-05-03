@@ -47,13 +47,15 @@
 .card-player {
     background-color: #6649c4;
     width: 15rem;
-    height: 15rem;
+    padding: .5rem 0;
+    min-height: 15rem;
     border-radius: 1rem;
     color: #ffd032;
     cursor: pointer;
     font-family: 'M PLUS Rounded 1c', sans-serif;
     font-weight: bolder;
     font-size: 1.3rem;
+    gap: .3REM;
 }
 
 .container-home,
@@ -80,10 +82,14 @@
     border: none;
     padding: 0.6rem;
     border-radius: 0.2rem;
+    color: #eb1751;
 }
 .input-nickname::placeholder {
     color: #eb1751;
     text-align: center;
+    background-color: aliceblue;
+    padding: 0.6rem;
+    border-radius: 0.2rem;
 }
 .button-play {
     border: none;
@@ -215,7 +221,7 @@
     align-content: center;
 }
 
-.controls-status-restart p {
+.controls-status-restart p , .input-points::placeholder{
     font-family: 'M PLUS Rounded 1c', sans-serif;
     font-weight: bolder;
     font-size: 1.3rem;
@@ -233,8 +239,19 @@
     height: 64px;
     width: 64px;
     cursor: pointer;
-
+    border: none;
+    color: transparent;
 }
+
 .image-avatar-player:hover {
     transform: scale(1.1);
 }
+/* .input-points{
+    outline: none;
+    border: none;
+    padding: 0.6rem;
+    background-color: transparent;
+    width: 150px;
+    height: 100px;
+    color: transparent;
+} */

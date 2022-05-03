@@ -1,69 +1,99 @@
-import PropTypes from 'prop-types';
 import React, { useState } from 'react';
-import Avatar from './Avatar';
 import BoardGame from './BoardGame';
 import { useLocalStorage } from './hooks/useLocalStorage';
+import Input from './Input';
 
-const PlayerRegistration = ({ value = '' }) => {
+const PlayerRegistration = ({ isOnePlayer }) => {
     const [onBoard, setOnBoard] = useState(true);
-    const [player, setPlayer] = useLocalStorage('', '');
-    const [infoPlayer, setInfoPlayer] = useState({})
+    const {  verifyInformation } = useLocalStorage('listOfInformation');
+    const [playerOne, setPlayerOne] = useState({})
+    const [playerTwo, setPlayerTwo] = useState({});
     const imagesAvatar = [
         'https://i.postimg.cc/k5W3Fx9m/gato.png',
         'https://i.postimg.cc/y8Bb4wCw/gato-unicornio.png',
         'https://i.postimg.cc/rp5s00Pd/sonreir.png',
     ];
-    const setItem = (key, value) => window.localStorage.setItem(key, value)
-
-    const setItemLocalStorage = ({playerOne,playerTwo}) => {
-       if(!!playerOne || !!playerTwo) {
-        setItem(playerOne, '0')
-        setItem(playerTwo, '0')
-        setOnBoard(false)
-       } else return alert('llena todos los campos')
-    }
-    console.log(infoPlayer)
+  
+    const inputHandlerPlayerOne = e => setPlayerOne({...playerOne, [e.target.name]: e.target.value});
+    const inputHandlerPlayerTwo = e => setPlayerTwo({...playerTwo, [e.target.name]: e.target.value});
+    
     return (
         <>
             {onBoard ? (
                 <div className="card-player">
-                    <input
-                        className="input-nickname"
-                        type="text"
-                        name="playerOne"
-                        placeholder="Enter your Nickname :)"
-                        onChange={e => setInfoPlayer({...infoPlayer,[e.target.name]: e.target.value})}
-                        required
-                    />
-                    {value !== 'singlePlayer' && (
-                        <input className="input-nickname"
-                            type="text" 
-                            placeholder="Enter your friend's nickname :)" 
-                            name='playerTwo'
-                            onChange={e => setInfoPlayer({...infoPlayer,[e.target.name]: e.target.value})}
-                            required />
-                    )}
-                    <div className="container-avatars">
-                        <p>Choose your avatar :</p>
-                        <div className="avatar-views">
-                            {imagesAvatar.map((image, index) => (
-                                <Avatar key={`image-avatar: ${index}`} image={image} />
-                            ))}
+                    <>
+                        <Input type="text"
+                            placeholder="Enter your nickname :)"
+                            name="namePlayerOne"
+                            onChange={inputHandlerPlayerOne}
+                            className="input-nickname"
+                        />
+
+                        <div className="container-avatars">
+                            <p>Choose your avatar :</p>
+                            <div className="avatar-views">
+                                {imagesAvatar.map((image, index) => (
+                                    <Input
+                                        key={`image-avatar: ${index}`}
+                                        image={image}
+                                        type="button"
+                                        value={image}
+                                        name="avatarPlayer"
+                                        className="image-avatar-player"
+                                        style={{ background: `url('${image}') center/cover no-repeat` }}
+                                        onClick={inputHandlerPlayerOne}
+                                    />
+                                ))}
+                            </div>
                         </div>
-                    </div>
-                    <button onClick={() => setItemLocalStorage(infoPlayer)} className="button-play">
+                    </>
+                    {!isOnePlayer && (
+                        <>
+                            <Input
+                                type="text"
+                                placeholder="Enter your friend's nickname :)"
+                                name="namePlayerTwo"
+                                className="input-nickname"
+                                onChange={inputHandlerPlayerTwo}
+                            />
+
+                            <div className="container-avatars">
+                                <p>Choose your avatar :</p>
+                                <div className="avatar-views">
+                                    {imagesAvatar.map((image, index) => (
+                                        <Input
+                                            key={`image-avatar: ${index}`}
+                                            image={image}
+                                            type="button"
+                                            value={image}
+                                            name="avatarPlayer"
+                                            style={{ background: `url('${image}') center/cover no-repeat` }}
+                                            className="image-avatar-player"
+                                            onClick={inputHandlerPlayerTwo}
+                                        />
+                                    ))}
+                                </div>
+                            </div>
+                        </>
+                    )}
+
+                    <button
+                        onClick={() => {
+                            setOnBoard(false);
+                            
+                            verifyInformation(playerOne, playerTwo);
+                        }}
+                        className="button-play"
+                    >
                         Play
                     </button>
                 </div>
             ) : (
-                <BoardGame player={player} value={value} />
+                <BoardGame isOnePlayer={isOnePlayer}  playerOne={playerOne} playerTwo={playerTwo}  />
+
             )}
         </>
     );
-};
-
-PlayerRegistration.propTypes = {
-    value: PropTypes.string,
 };
 
 export default PlayerRegistration;

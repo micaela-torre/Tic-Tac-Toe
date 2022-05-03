@@ -1,13 +1,12 @@
 import React from 'react';
 
-const DataPlayer = () => {
+
+const DataPlayer = ({ infoWinner }) => {
     return (
         <div className="data-winner">
-            <div className="image-ranking">
-                <p>10</p> 
-            </div>
-            <p>Mica</p>
-            <p>1222</p>
+            {/* <Avatar image={infoWinner?.namePlayer === 'Computer' ? 'https://i.postimg.cc/Fs5pKKqW/689355.png' : infoWinner.avatar} /> */}
+            <p>{infoWinner?.namePlayer}</p>
+            <p>{infoWinner?.points}</p>
         </div>
     );
 };

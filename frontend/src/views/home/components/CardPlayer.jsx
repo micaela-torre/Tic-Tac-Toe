@@ -1,23 +1,20 @@
 import React, { useState } from 'react';
 import PlayerRegistration from './PlayerRegistration';
 
-
 const CardPlayer = () => {
-
     const [visible, setVisible] = useState(false);
-    const [value, setValue] = useState('');
+    const [isOnePlayer, setIsOnePlayer] = useState(false);
 
-    const setData = (type) => {
+    const setData = () => {
+        setIsOnePlayer(true);
         setVisible(true);
-        setValue(type)
-        
     };
 
     return (
         <>
             {!visible ? (
                 <>
-                    <div className="card-player" onClick={() => setData("singlePlayer")} >
+                    <div className="card-player" onClick={setData}>
                         <div className="image-card-player"></div>
                         <p>Single Player</p>
                     </div>
@@ -27,10 +24,9 @@ const CardPlayer = () => {
                     </div>
                 </>
             ) : (
-                <PlayerRegistration value={value}/>
+                <PlayerRegistration isOnePlayer={isOnePlayer} />
             )}
         </>
     );
 };
 export default CardPlayer;
-
