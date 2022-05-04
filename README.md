@@ -15,8 +15,8 @@ If a player manages to score three points in a row, they win. Sometimes the vict
 
 IT'S TIME TO HAVE FUN!!!!
 
+https://titactoe-ar.web.app/
 
-- [Website Demo](https://luxxor.herokuapp.com/)
 
 ## Install
 
