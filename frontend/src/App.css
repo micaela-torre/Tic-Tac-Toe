@@ -1,10 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;800&family=Prompt:wght@900&display=swap&family=Luckiest+Guy');
+
+
 * {
     margin: 0%;
     padding: 0%;
     box-sizing: border-box;
 }
-body{
+body {
     font-family: 'M PLUS Rounded 1c', sans-serif;
 }
 .container-app {
@@ -273,25 +275,23 @@ body{
     font-size: 2rem;
 }
 
-.timer-container{
+.timer-container {
     background-color: #eb1751;
     border-radius: 5px;
     display: flex;
 }
 
 .details-ranking::-webkit-scrollbar-track {
-    background: #433F54 ;
+    background: #433f54;
     border-radius: 4px;
-      
-  }
-  
-  .details-ranking::-webkit-scrollbar-thumb {
+}
+
+.details-ranking::-webkit-scrollbar-thumb {
     background: #ffd032;
     border-radius: 4px;
-  }
-  
-  
-  ::-webkit-scrollbar {
-    width: .5rem;    
-    height: 1px; 
-  }
+}
+
+::-webkit-scrollbar {
+    width: 0.5rem;
+    height: 1px;
+}
