@@ -4,7 +4,9 @@
     padding: 0%;
     box-sizing: border-box;
 }
-
+body{
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+}
 .container-app {
     background-image: url('https://i.postimg.cc/7LtCyPMt/background-blue.png');
     min-height: 100vh;
@@ -47,7 +49,7 @@
 .card-player {
     background-color: #6649c4;
     width: 15rem;
-    padding: .5rem 0;
+    padding: 0.5rem 0;
     min-height: 15rem;
     border-radius: 1rem;
     color: #ffd032;
@@ -55,7 +57,7 @@
     font-family: 'M PLUS Rounded 1c', sans-serif;
     font-weight: bolder;
     font-size: 1.3rem;
-    gap: .3REM;
+    gap: 0.3rem;
 }
 
 .container-home,
@@ -66,7 +68,8 @@
     justify-content: space-evenly;
 }
 
-.title-ranking {
+.title-ranking,
+.card-modal h3 {
     color: #ffd032;
     font-size: 5rem;
     font-weight: bold;
@@ -91,7 +94,8 @@
     padding: 0.6rem;
     border-radius: 0.2rem;
 }
-.button-play {
+.button-play,
+.card-modal button {
     border: none;
     padding: 0.6rem;
     width: 6rem;
@@ -136,7 +140,8 @@
     color: #ffd032;
     -webkit-text-stroke: 1.5px #eb1751;
 }
-.container-ranking {
+.container-ranking,
+.card-modal {
     background-color: #6649c4;
     width: 40rem;
     height: 70vh;
@@ -163,14 +168,20 @@
 .data-winner {
     display: flex;
     align-items: center;
-    width: 100%;
+    width: 95%;
     justify-content: space-around;
     font-size: 2rem;
+    height: 5rem;
+    padding: 1rem;
+    border: 1.5px solid #ffd032;
+    margin: 5px auto;
+    border-radius: 5px;
 }
 .details-ranking {
     overflow: auto;
     height: 50vh;
 }
+
 .image-joystick {
     width: 15rem;
     height: 12rem;
@@ -221,7 +232,8 @@
     align-content: center;
 }
 
-.controls-status-restart p , .input-points::placeholder{
+.controls-status-restart p,
+.input-points::placeholder {
     font-family: 'M PLUS Rounded 1c', sans-serif;
     font-weight: bolder;
     font-size: 1.3rem;
@@ -246,12 +258,40 @@
 .image-avatar-player:hover {
     transform: scale(1.1);
 }
-/* .input-points{
-    outline: none;
-    border: none;
-    padding: 0.6rem;
-    background-color: transparent;
-    width: 150px;
-    height: 100px;
-    color: transparent;
-} */
+.card-modal {
+    width: 25rem;
+    height: 15rem;
+    top: 30%;
+    left: 35%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.card-modal h3 {
+    font-size: 2rem;
+}
+
+.timer-container{
+    background-color: #eb1751;
+    border-radius: 5px;
+    display: flex;
+}
+
+.details-ranking::-webkit-scrollbar-track {
+    background: #433F54 ;
+    border-radius: 4px;
+      
+  }
+  
+  .details-ranking::-webkit-scrollbar-thumb {
+    background: #ffd032;
+    border-radius: 4px;
+  }
+  
+  
+  ::-webkit-scrollbar {
+    width: .5rem;    
+    height: 1px; 
+  }
