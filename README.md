@@ -1,21 +1,19 @@
 # Tic-Tac-Toe
 
 
-¿Qué es Tic Tac Toe?
+What is three in a row?
 
-Tic tac toe, también llamado ceros y cruces, es un juego para dos jugadores, que pueden jugar los niños pequeños. Aunque se puede utilizar la estrategia, no es necesario que los niños pequeños se diviertan. El objetivo del juego es conseguir tres X u O seguidas antes que tu oponente. Las tres marcas se pueden colocar en el diagrama vertical, horizontal o diagonalmente a través del cuadrado central del diagrama.
+Tic tac toe is a game for two players, which can be played by young children. Although the strategy can be used, it is not necessary for young children to have fun. The object of the game is to roll three X's or O's in a row before your opponent. The three marks can be placed on the diagram vertically, horizontally, or diagonally across the central square of the diagram.
 
+Playing three in a row
 
-Jugando Tic tac Toe
+Traditionally, X goes first. Players take turns leaving their footprint on an empty square of their choice. A move can be used to further a player's cause of getting three in a row or to prevent the opponent from getting three in a row.
 
-Tradicionalmente, X va primero. Los jugadores se turnan para dejar su huella en un cuadrado vacío de su elección. Un movimiento puede usarse para promover la propia causa de un jugador de obtener tres en una fila o para bloquear al oponente de lograr tres en una fila.
+Score three in a row
 
-Puntuación Tic Tac Toe
+If a player manages to score three points in a row, they win. Sometimes the victory is accompanied by the comment or shout: "Tic tac toe: three in a row!". If neither player manages to get three of their points in a row, the game is a draw, often referred to as a game of cats.
 
-Si un jugador logra obtener tres puntos seguidos, gana. A veces, la victoria va acompañada del comentario o el grito: «Tic tac toe: ¡tres seguidos!» Si ningún jugador logra obtener tres de sus puntos seguidos, el juego es un empate, a menudo denominado juego de gatos.
-
-¡¡¡¡ES HORA DE DIVERTIRSE!!!!
-
+IT'S TIME TO HAVE FUN!!!!
 
 ## Install
 
