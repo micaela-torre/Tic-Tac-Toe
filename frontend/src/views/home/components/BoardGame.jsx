@@ -5,7 +5,7 @@ import Ranking from './Ranking';
 import { setPointsLocalStorage } from './functions/setLocalStorage';
 import { SwalAlert } from './SwalAlert';
 
-const BoardGame = ({ playerOne = {}, playerTwo = {}, isOnePlayer }) => {
+const BoardGame = ({ playerOne = {}, playerTwo = {}, isOnePlayer, setOnBoard }) => {
     const defaultSquares = () => new Array(9).fill(null);
     const [squares, setSquares] = useState(defaultSquares());
     const [winner, setWinner] = useState(null);
@@ -48,7 +48,14 @@ const BoardGame = ({ playerOne = {}, playerTwo = {}, isOnePlayer }) => {
             setPointsOne(pointsOne + 100);
             setPointsLocalStorage(playerOne.namePlayerOne, pointsOne);
             if (!!playerTwo.namePlayerTwo) {
-                SwalAlert(`${playerTwo?.namePlayerTwo} you have lost, try again!`, 'https://i.postimg.cc/hGYKPvVy/763744.png', 'center');
+                SwalAlert(
+                    `${playerOne?.namePlayerOne} you are Winner! ${playerTwo?.namePlayerTwo} you have lost, try again!`,
+                    'https://i.postimg.cc/hGYKPvVy/763744.png',
+                    'center',
+                    2000
+                );
+            } else {
+                SwalAlert(`${playerOne?.namePlayerOne} you are Winner!`, 'https://i.postimg.cc/CL7YGJtX/1067809.png', 'center');
             }
         }
         if (computerOrPlayerTwo) {
@@ -140,9 +147,7 @@ const BoardGame = ({ playerOne = {}, playerTwo = {}, isOnePlayer }) => {
             </div>
             <div className="controls-status-restart">
                 <p>{status}</p>
-                {/* <Timer/> */}
                 {winner && <Ranking handleRestart={handleRestart} />}
-
                 <button className="button-reset" onClick={handleRestart}></button>
             </div>
         </>

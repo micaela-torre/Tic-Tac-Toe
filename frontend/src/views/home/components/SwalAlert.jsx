@@ -1,7 +1,6 @@
-
 import Swal from 'sweetalert2';
 
-export function SwalAlert( text, image, position ) {
+export function SwalAlert(text, image, position, timer) {
     Swal.fire({
         text,
         customClass: {
@@ -10,7 +9,7 @@ export function SwalAlert( text, image, position ) {
         toast: true,
         position,
         showConfirmButton: false,
-        timer: 1500,
+        timer: timer ? timer : 1500,
         imageUrl: image,
         imageWidth: 65,
         background: '#ffd032',

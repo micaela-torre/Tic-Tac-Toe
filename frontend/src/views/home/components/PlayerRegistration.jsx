@@ -1,13 +1,12 @@
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import BoardGame from './BoardGame';
-import { setLocalStorage } from './functions/setLocalStorage';
+import { verifyInformation } from './functions/setLocalStorage';
 import Input from './Input';
 import { SwalAlert } from './SwalAlert';
 
 const PlayerRegistration = ({ isOnePlayer }) => {
     const [onBoard, setOnBoard] = useState(true);
-    const { verifyInformation } = setLocalStorage('listOfInformation');
     const [playerOne, setPlayerOne] = useState({});
     const [playerTwo, setPlayerTwo] = useState({});
 
@@ -94,7 +93,7 @@ const PlayerRegistration = ({ isOnePlayer }) => {
                     </button>
                 </div>
             ) : (
-                <BoardGame isOnePlayer={isOnePlayer} playerOne={playerOne} playerTwo={playerTwo} />
+                <BoardGame isOnePlayer={isOnePlayer} playerOne={playerOne} playerTwo={playerTwo} setOnBoard={setOnBoard} />
             )}
         </>
     );

@@ -1,18 +1,18 @@
-export function setLocalStorage(key) {
+const setInformationLocalStorage = info => localStorage.setItem('listOfInformation', JSON.stringify(info));
+
+export function verifyInformation(playerOne, playerTwo) {
     let listOfInformation = [];
+    let listLocalStorage = localStorage.getItem('listOfInformation');
+    listLocalStorage = !!listLocalStorage && JSON.parse(listLocalStorage);
+    if (listLocalStorage.length > 0) listOfInformation = [...listLocalStorage];
 
-    const setInformationLocalStorage = info => localStorage.setItem(key, JSON.stringify(info));
-
-    const verifyInformation = (playerOne, playerTwo) => {
-        let listLocalStorage = localStorage.getItem(key);
-        listLocalStorage = !!listLocalStorage && JSON.parse(listLocalStorage);
-        if (listLocalStorage.length > 0) listOfInformation = [...listLocalStorage];
+    if (Object.keys(playerTwo).length === 0) {
+        listOfInformation.push(playerOne);
+    } else {
         listOfInformation.push(playerOne, playerTwo);
+    }
 
-        setInformationLocalStorage(listOfInformation);
-    };
-
-    return { verifyInformation };
+    setInformationLocalStorage(listOfInformation);
 }
 
 export function setPointsLocalStorage(winner, WinnersPoints) {
@@ -30,7 +30,7 @@ export function setPointsLocalStorage(winner, WinnersPoints) {
 
         winningScoresList = [...localStoreInformation];
     }
-    winningScoresList.push(playerWinner);
+    if (winner !== 'Computer') winningScoresList.push(playerWinner);
 
     localStorage.setItem('listOfWinners', JSON.stringify(winningScoresList));
 }

@@ -1,7 +1,6 @@
 import React from 'react';
 import CardPlayer from './components/CardPlayer';
 
-
 const Home = () => {
     return (
         <div className="container-home">

@@ -8,6 +8,7 @@
 }
 body {
     font-family: 'M PLUS Rounded 1c', sans-serif;
+    font-weight: bold;
 }
 .container-app {
     background-image: url('https://i.postimg.cc/7LtCyPMt/background-blue.png');

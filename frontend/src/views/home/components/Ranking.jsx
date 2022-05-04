@@ -8,12 +8,14 @@ const Ranking = ({ handleRestart }) => {
         <div className="container-ranking">
             <h3 className="title-ranking">top 15</h3>
             <div className="details-ranking">
-                {listOfWinnersFinally
-                    .sort((a, b) => b.points - a.points)
-                    .slice(0, 15)
-                    .map((winner, index) => (
-                        <DataPlayer key={`winner-${index}`} winner={winner} />
-                    ))}
+                {!listOfWinnersFinally.length ? (
+                    <h4 className="title-ranking">try again, you can!</h4>
+                ) : (
+                    listOfWinners
+                        .sort((a, b) => b.points - a.points)
+                        .slice(0, 15)
+                        .map((winner, index) => <DataPlayer key={`winner-${index}`} winner={winner} />)
+                )}
             </div>
             <button className="button-reset" onClick={() => handleRestart()}></button>
         </div>
